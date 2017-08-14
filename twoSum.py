@@ -3,23 +3,15 @@ class Solution(object):
         result=[]
         indice=[]
         for x in nums:
-            for y in nums:
+            numsnew=nums*1
+            numsnew.remove(x)
+            for y in numsnew:
                 if x==target-y:
                     result.append(x)
-        for y in result:
-            z=nums.index(y)
-            indice.append(z)
+        resultnew=list(set(result))
+        for z in resultnew:         
+            ind=[i for i,a in enumerate(nums) if a==z]
+            indice.append(ind)
         return indice
-       ##has issue when input[3,2,4],6 
-class Solution(object):
-    def twoSum(self, nums, target):
-        result=[]
-        indice=[]
-        for x in nums:
-            for y in nums:
-                if x==target-y and x!=y:
-                    result.append(x)
-        for y in result:
-            z=nums.index(y)
-            indice.append(z)
-        return indice
+    #previously have issue with input[3,2,4],6 [3,3],6
+    
